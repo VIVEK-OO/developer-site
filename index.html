@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-title-pattern="{appName} — Android Companion for macOS">
+      BridgeMac — Android Companion for macOS
+    </title>
+    <meta
+      name="description"
+      content="Mirror your Android screen, sync notifications and 2FA codes, share clipboard, and transfer files directly with your Mac over an encrypted local connection."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <rect
+                x="3"
+                y="4"
+                width="13"
+                height="10"
+                rx="2.2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <rect
+                x="13"
+                y="10"
+                width="8"
+                height="11"
+                rx="2"
+                fill="var(--bg)"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+          <span data-config="appName">BridgeMac</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#privacy">Privacy</a>
+          <a href="support.html">Support</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            title="Toggle appearance"
+          >
+            <svg
+              id="icon-moon"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              id="icon-sun"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              style="display: none"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.9"
+              />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <a class="btn btn-primary btn-sm" href="#download">Get App</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container">
+          <div class="pill">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span data-config="appSubtitle">Android Companion for macOS</span>
+          </div>
+          <h1 data-config="tagline">Android and Mac, quietly connected.</h1>
+          <p class="hero-lead" data-config="description">
+            Mirror your screen, sync notifications and 2FA codes, share
+            clipboard, and drop files between Android and Mac over a direct,
+            encrypted local connection.
+          </p>
+
+          <div class="hero-cta" id="download">
+            <a class="btn btn-primary" href="#" data-store-link="play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 3.8v16.4c0 .7.8 1.2 1.4.8l13.2-8.2c.6-.4.6-1.2 0-1.6L6.4 3c-.6-.4-1.4.1-1.4.8Z"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span data-config="playStoreStatus">Coming to Google Play</span>
+            </a>
+            <a class="btn btn-secondary" href="#" data-store-link="mac">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="4"
+                  width="18"
+                  height="13"
+                  rx="2.5"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                />
+                <path
+                  d="M8 20h8M12 17v3"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span>Download for macOS</span>
+            </a>
+          </div>
+          <div class="hero-meta">
+            <span data-config="androidMinSdk">Android 10+</span> ·
+            <span data-config="macAppStatus"
+              >macOS 13+ (Apple Silicon &amp; Intel)</span
+            >
+            · Zero cloud accounts
+          </div>
+
+          <!-- Interactive Mac Window Preview -->
+          <div class="stage-wrap">
+            <div class="mac-window" aria-label="Interactive feature preview">
+              <div class="mac-titlebar">
+                <div class="traffic-lights" aria-hidden="true">
+                  <span class="dot red"></span>
+                  <span class="dot amber"></span>
+                  <span class="dot green"></span>
+                </div>
+
+                <div class="titlebar-tabs" role="tablist">
+                  <button
+                    class="tab-btn"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-preview-tab="mirror"
+                  >
+                    Screen Mirror
+                  </button>
+                  <button
+                    class="tab-btn"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-preview-tab="notify"
+                  >
+                    Notifications &amp; 2FA
+                  </button>
+                  <button
+                    class="tab-btn"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-preview-tab="clipboard"
+                  >
+                    Clipboard
+                  </button>
+                  <button
+                    class="tab-btn"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-preview-tab="drop"
+                  >
+                    File Drop
+                  </button>
+                </div>
+
+                <div class="titlebar-status" id="preview-status">
+                  Encrypted · Wi-Fi / USB
+                </div>
+              </div>
+
+              <div class="mac-body">
+                <div class="preview-copy">
+                  <h3 id="preview-title">Low-latency screen mirror &amp; input</h3>
+                  <p id="preview-desc">
+                    View your Android screen right inside a native macOS window
+                    and interact naturally with your Mac trackpad, mouse, and
+                    keyboard over Wi-Fi or USB.
+                  </p>
+                  <ul class="preview-specs" id="preview-specs">
+                    <li>
+                      <span class="check-badge" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                          <path
+                            d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <span>Direct peer-to-peer stream with hardware-accelerated decoding</span>
+                    </li>
+                    <li>
+                      <span class="check-badge" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                          <path
+                            d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <span>Pointer clicks, scrolling, and keyboard typing forwarded smoothly</span>
+                    </li>
+                    <li>
+                      <span class="check-badge" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                          <path
+                            d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <span>Works over local Wi-Fi or wired USB tether</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="device-frame">
+                  <div class="device-screen">
+                    <div class="device-statusbar">
+                      <span>Companion</span>
+                      <span id="phone-badge">Mirror Active</span>
+                    </div>
+
+                    <div class="mock-card">
+                      <div class="mock-card-title">
+                        <span id="card1-title">Display Session</span>
+                        <span id="card1-meta" style="color: var(--ink-tertiary); font-weight: 500">
+                          60 fps · Local
+                        </span>
+                      </div>
+                      <div class="mock-card-sub" id="card1-sub">
+                        1080 × 2400 · Trackpad &amp; Keyboard Ready
+                      </div>
+                      <div
+                        class="otp-code"
+                        id="card1-otp"
+                        style="display: none"
+                      ></div>
+                    </div>
+
+                    <div class="mock-card">
+                      <div class="mock-card-title">
+                        <span id="card2-title">Transport</span>
+                      </div>
+                      <div class="mock-card-sub" id="card2-sub">
+                        TLS + AES-256-GCM tunnel · Zero cloud relay
+                      </div>
+                    </div>
+
+                    <div class="device-footer-pill">
+                      <span>mDNS / Bonjour Paired</span>
+                      <span style="color: var(--green); font-weight: 600">● Live</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Bento -->
+      <section class="section section-alt" id="features">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Continuity</span>
+            <h2>Built to feel native to your Mac.</h2>
+            <p>
+              Thoughtful utilities that bridge Android and macOS without noisy
+              dashboards, sign-in walls, or background clutter.
+            </p>
+          </div>
+
+          <div class="bento-grid">
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="6"
+                    y="2.5"
+                    width="12"
+                    height="19"
+                    rx="2.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M10 18.5h4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Screen Mirror &amp; Control</h3>
+              <p>
+                Stream your Android display to a resizable macOS window and
+                navigate apps directly using your trackpad and keyboard.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.3 21a2 2 0 0 0 3.4 0"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Notifications &amp; 2FA OTPs</h3>
+              <p>
+                Receive incoming alerts and automatically detected SMS
+                verification codes right on your Mac desktop.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="8"
+                    y="8"
+                    width="12"
+                    height="12"
+                    rx="2.2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+              </div>
+              <h3>Universal Clipboard</h3>
+              <p>
+                Push copied text, URLs, and snippets seamlessly between Android
+                and Mac with a Quick Settings tile or share action.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 16V4M12 4l-4 4M12 4l4 4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 16.5v1.5A2 2 0 0 0 6 20h12a2 2 0 0 0 2-2v-1.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Local File Drop</h3>
+              <p>
+                Send photos, videos, and documents directly from Android’s Share
+                menu into macOS at full local network speed.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="8"
+                    y="8"
+                    width="8"
+                    height="8"
+                    rx="1.2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+              </div>
+              <h3>Instant QR Pairing</h3>
+              <p>
+                Scan the QR code in the Mac menu bar to exchange session keys and
+                pair both devices in seconds.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <div class="icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3 4 6.5V12c0 5 3.4 8.5 8 9.5 4.6-1 8-4.5 8-9.5V6.5L12 3Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Wi-Fi &amp; USB Ready</h3>
+              <p>
+                Discover paired Macs automatically via mDNS/Bonjour on Wi-Fi, or
+                plug in via USB for ultra-reliable low-latency sessions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="section" id="how-it-works">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Setup</span>
+            <h2>Three steps, zero accounts.</h2>
+            <p>
+              Pair your devices once on your local network and let them
+              reconnect automatically whenever you sit down at your Mac.
+            </p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-num">01 / INSTALL</div>
+              <h3>Open both companion apps</h3>
+              <p>
+                Launch <span data-config="appName">BridgeMac</span> on macOS and
+                install the Android companion on your phone or tablet.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">02 / PAIR</div>
+              <h3>Scan the local QR code</h3>
+              <p>
+                Use the Android app’s built-in QR scanner to exchange local
+                cryptographic keys directly with your Mac.
+              </p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">03 / CONNECT</div>
+              <h3>Work across both screens</h3>
+              <p>
+                Approve only the permissions you want—notifications, 2FA SMS,
+                screen mirror, or file drop—and start working.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy & Security -->
+      <section class="section section-alt" id="privacy">
+        <div class="container">
+          <div class="privacy-panel">
+            <div>
+              <span class="eyebrow">Privacy Architecture</span>
+              <h2>Your data never leaves your local network.</h2>
+              <p>
+                <span data-config="appName">BridgeMac</span> is engineered as a
+                strict peer-to-peer utility. There are no user accounts, no
+                cloud storage servers, no advertising SDKs, and no telemetry
+                brokers.
+              </p>
+              <a class="btn btn-secondary" href="privacy.html">
+                Read full Privacy Policy
+              </a>
+            </div>
+
+            <div class="trust-list">
+              <div class="trust-item">
+                <strong>AES-256-GCM + TLS</strong>
+                <span>End-to-end authenticated local transport encryption.</span>
+              </div>
+              <div class="trust-item">
+                <strong>Zero Cloud Servers</strong>
+                <span>Files, notifications, and SMS never touch external servers.</span>
+              </div>
+              <div class="trust-item">
+                <strong>Hardware Key Storage</strong>
+                <span>macOS Keychain &amp; Android EncryptedSharedPreferences.</span>
+              </div>
+              <div class="trust-item">
+                <strong>No Ads or Trackers</strong>
+                <span>Clean, self-contained apps with no third-party ad SDKs.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Developer & Support Card (for Play Console Developer Website compliance) -->
+      <section class="section" id="developer">
+        <div class="container">
+          <div class="dev-card">
+            <div class="dev-meta">
+              <span class="eyebrow">Developer &amp; Support</span>
+              <h3 data-config="developerName">IndieMac Labs</h3>
+              <p>
+                <span data-config="developerLegalLine"
+                  >Independent Mobile &amp; macOS Software Developer</span
+                >
+                ·
+                <a data-config-email href="mailto:support@yourdomain.com"
+                  >support@yourdomain.com</a
+                >
+              </p>
+            </div>
+            <div class="dev-actions">
+              <a class="btn btn-secondary" href="support.html">Support &amp; FAQ</a>
+              <a class="btn btn-secondary" href="privacy.html">Privacy Policy</a>
+              <a class="btn btn-secondary" href="terms.html">Terms of Use</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          &copy; <span data-config="copyrightYear">2026</span>
+          <span data-config="developerName">IndieMac Labs</span> ·
+          <span data-config="appName">BridgeMac</span>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+          <a data-config-email href="mailto:support@yourdomain.com"
+            >support@yourdomain.com</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

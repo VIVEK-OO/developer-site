@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-title-pattern="Support — {appName}">
+      Support — BridgeMac
+    </title>
+    <meta
+      name="description"
+      content="Help, setup troubleshooting, FAQs, and developer contact details."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <rect
+                x="3"
+                y="4"
+                width="13"
+                height="10"
+                rx="2.2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <rect
+                x="13"
+                y="10"
+                width="8"
+                height="11"
+                rx="2"
+                fill="var(--bg)"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+          <span data-config="appName">BridgeMac</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how-it-works">How it works</a>
+          <a class="active" href="support.html">Support</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              id="icon-sun"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.9" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <a class="btn btn-secondary btn-sm" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container doc-wrap">
+        <div class="doc-header">
+          <span class="eyebrow">Help &amp; Contact</span>
+          <h1>Support Center</h1>
+          <div class="doc-meta">
+            Direct developer support for
+            <strong data-config="appName">BridgeMac</strong> by
+            <strong data-config="developerName">IndieMac Labs</strong>
+          </div>
+        </div>
+
+        <section class="doc-card">
+          <h2>Developer Contact</h2>
+          <p>
+            Need help with pairing, permissions, or bug reports? Reach out
+            directly and include your Android model, Android version, and macOS
+            version.
+          </p>
+          <p style="margin-top: 14px">
+            <a
+              class="btn btn-primary btn-sm"
+              data-config-email
+              href="mailto:support@yourdomain.com"
+            >
+              support@yourdomain.com
+            </a>
+          </p>
+        </section>
+
+        <section class="doc-card">
+          <h2>Frequently Asked Questions</h2>
+
+          <details class="faq-item" open>
+            <summary>
+              <span>How do I pair my Android phone with my Mac?</span>
+            </summary>
+            <p>
+              Ensure both your Mac and Android device are connected to the same
+              Wi-Fi network (or connected via USB cable). Open the companion app
+              on your Mac, reveal the pairing QR code, and scan it using the
+              Android app.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Why does the app ask for SMS or Notification permissions?</span>
+            </summary>
+            <p>
+              These permissions are strictly optional and used only to forward
+              your incoming notifications and 2FA verification codes over the
+              encrypted local connection to your paired Mac. Nothing is sent to
+              cloud servers.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>My Mac doesn’t appear automatically over Wi-Fi.</span>
+            </summary>
+            <p>
+              Some public or guest Wi-Fi networks enable AP/client isolation
+              that blocks local mDNS/Bonjour discovery. Try switching to a
+              private Wi-Fi network or connecting your phone to your Mac via USB.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>How do I unpair or delete my stored keys?</span>
+            </summary>
+            <p>
+              Remove the paired device inside the Android or macOS app settings.
+              Because all pairing credentials are stored locally in Android
+              EncryptedSharedPreferences and the macOS Keychain, unpairing or
+              uninstalling clears them permanently.
+            </p>
+          </details>
+        </section>
+
+        <section class="doc-card">
+          <h2>System Requirements</h2>
+          <ul>
+            <li>
+              <strong>Android:</strong>
+              <span data-config="androidMinSdk">Android 10+</span>
+            </li>
+            <li>
+              <strong>macOS:</strong>
+              <span data-config="macAppStatus"
+                >macOS 13+ (Apple Silicon &amp; Intel)</span
+              >
+            </li>
+            <li>
+              <strong>Network:</strong> Local Wi-Fi (same subnet for mDNS) or
+              USB connection
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          &copy; <span data-config="copyrightYear">2026</span>
+          <span data-config="developerName">IndieMac Labs</span> ·
+          <span data-config="appName">BridgeMac</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a data-config-email href="mailto:support@yourdomain.com"
+            >support@yourdomain.com</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

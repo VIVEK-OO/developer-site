@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-title-pattern="Privacy Policy — {appName}">
+      Privacy Policy — BridgeMac
+    </title>
+    <meta
+      name="description"
+      content="Privacy Policy detailing local-only peer-to-peer data handling and Android permissions."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <rect
+                x="3"
+                y="4"
+                width="13"
+                height="10"
+                rx="2.2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <rect
+                x="13"
+                y="10"
+                width="8"
+                height="11"
+                rx="2"
+                fill="var(--bg)"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+          <span data-config="appName">BridgeMac</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how-it-works">How it works</a>
+          <a href="support.html">Support</a>
+          <a class="active" href="privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              id="icon-sun"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.9" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <a class="btn btn-secondary btn-sm" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container doc-wrap">
+        <div class="doc-header">
+          <span class="eyebrow">Legal &amp; Compliance</span>
+          <h1>Privacy Policy</h1>
+          <div class="doc-meta">
+            Applies to <strong data-config="appName">BridgeMac</strong> (Android
+            &amp; macOS) · Published by
+            <strong data-config="developerName">IndieMac Labs</strong> · Last
+            Updated: <span data-config="privacyLastUpdated">November 2026</span>
+          </div>
+        </div>
+
+        <section class="doc-card">
+          <h2>1. Core Principle: Local-Only &amp; Peer-to-Peer</h2>
+          <p>
+            <span data-config="appName">BridgeMac</span> and its macOS
+            companion application are built with a strict privacy-first,
+            local-only architecture:
+          </p>
+          <ul>
+            <li>
+              <strong>No Cloud Storage or Accounts:</strong> We do not require
+              account registration, and we do not host, collect, store, or
+              upload your files, SMS messages, clipboard items, screen frames,
+              or notifications to any external cloud servers.
+            </li>
+            <li>
+              <strong>Direct Encrypted Connection:</strong> All communication
+              between your Android device and your paired Mac happens directly
+              over your local Wi-Fi network or USB cable using TLS and
+              authenticated <strong>AES-256-GCM</strong> encryption.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-card">
+          <h2>2. Android Permissions &amp; How Data Is Handled</h2>
+          <p>
+            Each permission is optional and requested only for the specific
+            continuity feature you choose to enable:
+          </p>
+
+          <h3>A. SMS Permissions (<code>RECEIVE_SMS</code>, <code>READ_SMS</code>)</h3>
+          <ul>
+            <li>
+              <strong>Purpose:</strong> Detects incoming Two-Factor
+              Authentication (2FA) verification codes / OTPs and forwards them
+              to your paired Mac so you can paste them quickly.
+            </li>
+            <li>
+              <strong>Handling:</strong> Incoming SMS messages are inspected
+              locally in memory on your Android device. Extracted verification
+              codes are sent exclusively to your paired Mac over the encrypted
+              local channel and are never retained on external servers.
+            </li>
+          </ul>
+
+          <h3>B. Notification Access (<code>NotificationListenerService</code>)</h3>
+          <ul>
+            <li>
+              <strong>Purpose:</strong> Mirrors incoming notifications (calls,
+              messages, and app alerts) from your Android device to your Mac
+              desktop.
+            </li>
+            <li>
+              <strong>Handling:</strong> Notification payloads are processed in
+              memory and forwarded directly to your paired Mac. No notification
+              history is uploaded or sold.
+            </li>
+          </ul>
+
+          <h3>C. Camera Permission (<code>CAMERA</code>)</h3>
+          <ul>
+            <li>
+              <strong>Purpose:</strong> Used solely to scan the QR pairing code
+              shown on your Mac to exchange cryptographic session keys.
+            </li>
+            <li>
+              <strong>Handling:</strong> Camera frames are analyzed strictly in
+              real time on-device; no photos or video are saved or transmitted.
+            </li>
+          </ul>
+
+          <h3>D. Screen Projection &amp; Accessibility Input</h3>
+          <ul>
+            <li>
+              <strong>Purpose:</strong> Enables live screen mirroring to your
+              Mac and allows mouse/trackpad clicks and keyboard input from your
+              Mac to control your paired Android device when mirroring is
+              active.
+            </li>
+            <li>
+              <strong>Handling:</strong> Screen frames and input events travel
+              only over the active encrypted peer-to-peer session and stop
+              immediately when you end the session.
+            </li>
+          </ul>
+
+          <h3>E. Local Network, Bluetooth &amp; Foreground Service</h3>
+          <ul>
+            <li>
+              <strong>Purpose:</strong> Discovers your paired Mac on the local
+              network via mDNS/Bonjour or Bluetooth wake and maintains a
+              reliable local connection while active.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-card">
+          <h2>3. Data Sharing, Analytics &amp; Third Parties</h2>
+          <ul>
+            <li>
+              We do <strong>not</strong> sell, rent, monetize, or share your
+              personal data with third parties, advertisers, or data brokers.
+            </li>
+            <li>
+              The application contains <strong>no</strong> third-party
+              advertising SDKs, behavioral trackers, or cross-app analytics.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-card">
+          <h2>4. Data Security &amp; Retention</h2>
+          <ul>
+            <li>
+              Paired sessions are protected with authenticated encryption
+              (<strong>AES-256-GCM</strong>) and local TLS device identity
+              verification.
+            </li>
+            <li>
+              Pairing keys are stored locally using Android
+              <code>EncryptedSharedPreferences</code> and the macOS Keychain.
+            </li>
+            <li>
+              Because we do not operate backend user databases, unpairing a
+              device or uninstalling the app immediately removes all locally
+              stored pairing keys and preferences.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-card">
+          <h2>5. Children’s Privacy</h2>
+          <p>
+            <span data-config="appName">BridgeMac</span> does not knowingly
+            collect personal information from children under 13 (or the
+            applicable age in your jurisdiction), as the app collects no personal
+            data on external servers.
+          </p>
+        </section>
+
+        <section class="doc-card">
+          <h2>6. Contact the Developer</h2>
+          <p>
+            If you have questions about this Privacy Policy, data handling, or
+            permissions, please contact
+            <strong data-config="developerName">IndieMac Labs</strong> at
+            <a data-config-email href="mailto:support@yourdomain.com" style="color: var(--accent); text-decoration: underline">
+              support@yourdomain.com
+            </a>.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          &copy; <span data-config="copyrightYear">2026</span>
+          <span data-config="developerName">IndieMac Labs</span> ·
+          <span data-config="appName">BridgeMac</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+          <a data-config-email href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
