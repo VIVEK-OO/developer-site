@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-title-pattern="Brand Assets &amp; Logo — {appName}">
+      Brand Assets &amp; Logo — BridgeMac
+    </title>
+    <meta
+      name="description"
+      content="Official app icons and brand identity assets for BridgeMac on Google Play Store and macOS."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script defer src="app.js"></script>
+    <style>
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 32px;
+      }
+      .icon-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 28px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .icon-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+      .icon-card.featured {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent), var(--shadow-md);
+      }
+      .icon-img-wrap {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 20px;
+        border-radius: 36px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        background: #000;
+        display: grid;
+        place-items: center;
+      }
+      .icon-img-wrap img,
+      .icon-img-wrap svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .badge-rec {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        background: var(--accent);
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+      .icon-meta {
+        font-size: 13px;
+        color: var(--ink-secondary);
+        margin: 8px 0 20px;
+        line-height: 1.5;
+      }
+      .btn-download-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* Mockup Previews */
+      .mockup-section {
+        margin-top: 64px;
+      }
+      .dock-preview {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 28px;
+        padding: 14px 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: var(--shadow-lg);
+      }
+      [data-theme="dark"] .dock-preview {
+        background: rgba(30, 30, 35, 0.55);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .dock-item {
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .dock-item:hover {
+        transform: scale(1.15) translateY(-6px);
+      }
+      .dock-item img,
+      .dock-item svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @media (max-width: 860px) {
+        .icon-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <img
+            src="assets/icon-192.png"
+            width="28"
+            height="28"
+            style="border-radius: 7px; object-fit: cover"
+            alt="BridgeMac"
+          />
+          <span data-config="appName">BridgeMac</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how-it-works">How it works</a>
+          <a class="active" href="logo.html">Logo &amp; Brand</a>
+          <a href="support.html">Support</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              id="icon-sun"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.9" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <a class="btn btn-secondary btn-sm" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container doc-wrap" style="max-width: 960px">
+        <div class="doc-header">
+          <span class="eyebrow">Brand &amp; Assets</span>
+          <h1>Official App Icons</h1>
+          <div class="doc-meta">
+            High-resolution Apple-grade app icons for
+            <strong data-config="appName">BridgeMac</strong> · Prepared for
+            Google Play Console (512×512) and macOS Dock.
+          </div>
+        </div>
+
+        <div class="icon-grid">
+          <!-- Option 1: Primary Luminous Infinity Bridge -->
+          <div class="icon-card featured">
+            <div>
+              <span class="badge-rec">Primary (Selected)</span>
+              <div class="icon-img-wrap">
+                <img
+                  src="assets/icon-option-1.jpg"
+                  alt="BridgeMac Luminous Infinity Icon"
+                />
+              </div>
+              <h3 style="margin: 0 0 6px; font-size: 18px">Luminous Infinity Loop</h3>
+              <p class="icon-meta">
+                Obsidian slate squircle with chamfered titanium rim and a glowing
+                infinity bridge linking Android &amp; Mac in Apple cyan, emerald,
+                and violet.
+              </p>
+            </div>
+            <div class="btn-download-group">
+              <a
+                class="btn btn-primary btn-sm"
+                href="assets/icon-512.png"
+                download="BridgeMac-PlayStore-512x512.png"
+              >
+                Download 512×512 PNG (Play Store)
+              </a>
+              <a
+                class="btn btn-secondary btn-sm"
+                href="assets/icon-192.png"
+                download="BridgeMac-192x192.png"
+              >
+                Download 192×192 PNG
+              </a>
+            </div>
+          </div>
+
+          <!-- Option 2: Interlocking Glass Links -->
+          <div class="icon-card">
+            <div>
+              <span class="eyebrow" style="margin-bottom: 8px">Concept 2</span>
+              <div class="icon-img-wrap">
+                <img
+                  src="assets/icon-option-2.jpg"
+                  alt="BridgeMac Interlocking Glass Links Icon"
+                />
+              </div>
+              <h3 style="margin: 0 0 6px; font-size: 18px">Interlocking Glass Link</h3>
+              <p class="icon-meta">
+                Space-gray squircle with glowing translucent neon cyan and purple
+                device contours forming an unbreakable continuity connection.
+              </p>
+            </div>
+            <div class="btn-download-group">
+              <a
+                class="btn btn-secondary btn-sm"
+                href="assets/icon-option-2.jpg"
+                download="BridgeMac-Concept-2.jpg"
+              >
+                Download HD Image
+              </a>
+            </div>
+          </div>
+
+          <!-- Option 3: Vector Master SVG -->
+          <div class="icon-card">
+            <div>
+              <span class="eyebrow" style="margin-bottom: 8px">Vector Master</span>
+              <div class="icon-img-wrap">
+                <img src="assets/logo.svg" alt="BridgeMac Vector Logo" />
+              </div>
+              <h3 style="margin: 0 0 6px; font-size: 18px">Scalable Vector SVG</h3>
+              <p class="icon-meta">
+                Crisp, mathematically sharp vector illustration with Mac window
+                traffic lights, glowing continuity beam, and modern Android phone.
+              </p>
+            </div>
+            <div class="btn-download-group">
+              <a
+                class="btn btn-secondary btn-sm"
+                href="assets/logo.svg"
+                download="BridgeMac-Vector-Logo.svg"
+              >
+                Download SVG Vector
+              </a>
+              <a
+                class="btn btn-secondary btn-sm"
+                href="assets/favicon.svg"
+                download="favicon.svg"
+              >
+                Download Favicon
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dock Mockup -->
+        <div class="mockup-section" style="text-align: center">
+          <span class="eyebrow">Visual Preview</span>
+          <h2 style="margin: 6px 0 20px; font-size: 24px">macOS Dock Preview</h2>
+          <div class="dock-preview">
+            <div class="dock-item" title="Finder">
+              <svg viewBox="0 0 64 64" width="100%" height="100%">
+                <rect width="64" height="64" rx="14" fill="#007aff" />
+                <path
+                  d="M18 22 C18 16 46 16 46 22 L46 42 C46 48 18 48 18 42 Z"
+                  fill="#ffffff"
+                  fill-opacity="0.9"
+                />
+                <circle cx="26" cy="30" r="3" fill="#007aff" />
+                <circle cx="38" cy="30" r="3" fill="#007aff" />
+                <path
+                  d="M26 38 C30 42 34 42 38 38"
+                  fill="none"
+                  stroke="#007aff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <!-- BridgeMac Icon in Dock -->
+            <div
+              class="dock-item"
+              style="box-shadow: 0 0 20px rgba(56, 189, 248, 0.45)"
+              title="BridgeMac"
+            >
+              <img src="assets/icon-192.png" alt="BridgeMac Dock Icon" />
+            </div>
+            <div class="dock-item" title="Messages">
+              <svg viewBox="0 0 64 64" width="100%" height="100%">
+                <rect width="64" height="64" rx="14" fill="#34c759" />
+                <path
+                  d="M20 20 H44 C47 20 49 22 49 25 V39 C49 42 47 44 44 44 H34 L26 49 V44 H20 C17 44 15 42 15 39 V25 C15 22 17 20 20 20 Z"
+                  fill="#ffffff"
+                />
+              </svg>
+            </div>
+            <div class="dock-item" title="Terminal">
+              <svg viewBox="0 0 64 64" width="100%" height="100%">
+                <rect width="64" height="64" rx="14" fill="#1c1c1e" />
+                <path
+                  d="M20 26 L28 32 L20 38"
+                  fill="none"
+                  stroke="#30d158"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="32"
+                  y1="38"
+                  x2="44"
+                  y2="38"
+                  stroke="#30d158"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Play Console Specifications Card -->
+        <section class="doc-card" style="margin-top: 48px">
+          <h2>Google Play Console Icon Specifications Checklist</h2>
+          <ul style="margin-top: 12px">
+            <li>
+              <strong>Size:</strong> 512 × 512 px (
+              <code>assets/icon-512.png</code> is pre-scaled to exactly 512×512
+              px)
+            </li>
+            <li><strong>Format:</strong> 32-bit PNG</li>
+            <li>
+              <strong>File size:</strong> ~265 KB (Google Play limit is 1,024
+              KB / 1 MB)
+            </li>
+            <li>
+              <strong>Shape:</strong> Square with full-bleed squircle rendering
+              (Google Play automatically applies its uniform 20% corner radius
+              and dynamic lighting)
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          &copy; <span data-config="copyrightYear">2026</span>
+          <span data-config="developerName">IndieMac Labs</span> ·
+          <span data-config="appName">BridgeMac</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="logo.html">Logo &amp; Assets</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
