@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
   developerName: "IndieMac Labs",
   developerLegalLine: "Independent Mobile & macOS Software Developer",
   supportEmail: "support@yourdomain.com",
-  websiteDomain: "https://yourdomain.com",
+  websiteDomain: "https://vivek-oo.github.io/developer-site",
   location: "India",
   copyrightYear: "2026",
 
